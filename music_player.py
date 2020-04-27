@@ -1,4 +1,5 @@
 # CLI(command line interface) for the music player
+# Authored by: Cesar Perez Vuelvas (checharperezv@gmail.com)
 
 import sys
 
