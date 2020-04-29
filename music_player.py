@@ -3,15 +3,20 @@
 
 import sys
 
-try:
-    command = sys.argv[1]
-except IndexError:
-    raise ValueError('Invalid command')
+valid_commands = ["play"]
 
-if command != 'play':
-    raise ValueError('Invalid command')
+try:
+  command = sys.argv[1]
+except IndexError:
+  raise ValueError('Command not supplied')
+
+if command not in valid_commands:
+  raise ValueError('Invalid command')
 
 arguments = sys.argv[2:]
 
-for argument in arguments:
-    print('Playing', argument)
+if arguments:
+  for argument in arguments:
+    print(f'Playing', argument)
+else:
+  raise ValueError('Play command requires at least one argument')
