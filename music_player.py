@@ -5,6 +5,8 @@ import sys
 
 valid_commands = ["play"]
 
+valid_files = ['Ameno.mp3','Dorime.mp3','Escandalo.mp3','la_tusa.mp3']
+
 try:
   command = sys.argv[1]
 except IndexError:
@@ -15,8 +17,12 @@ if command not in valid_commands:
 
 arguments = sys.argv[2:]
 
+
 if arguments:
   for argument in arguments:
-    print(f'Playing', argument)
+    if argument in valid_files:
+        print(f'Playing', argument)
+    else:
+        print(f"can't be found or accessed{argument}")
 else:
   raise ValueError('Play command requires at least one argument')
