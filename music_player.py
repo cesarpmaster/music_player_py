@@ -1,11 +1,17 @@
+
 # CLI(command line interface) for the music player
 # Authored by: Cesar Perez Vuelvas (checharperezv@gmail.com)
 
 import sys
+import os
+from pathlib import Path
 
 valid_commands = ["play"]
 
-valid_files = ['Ameno.mp3','Dorime.mp3','Escandalo.mp3','la_tusa.mp3']
+places = "C:\\Users\\chech\\music_player_py"
+
+archives = []
+
 
 try:
   command = sys.argv[1]
@@ -17,12 +23,11 @@ if command not in valid_commands:
 
 arguments = sys.argv[2:]
 
-
 if arguments:
   for argument in arguments:
-    if argument in valid_files:
-        print(f'Playing', argument)
+    if os.path.isfile(f"C:\\Users\\chech\\music_player_py\\{argument}"):
+      print(f"Playing {argument}")
     else:
-        print(f"can't be found or accessed{argument}")
+        raise ValueError(f"can't be found or accessed{argument}")
 else:
   raise ValueError('Play command requires at least one argument')
