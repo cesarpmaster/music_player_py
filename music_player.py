@@ -4,11 +4,14 @@
 
 import sys
 import os
+import pyglet
 from pathlib import Path
 
 valid_commands = ["play"]
 
 places = "C:\\Users\\chech\\music_player_py"
+
+window = pyglet.window.Window()
 
 archives = []
 
@@ -25,9 +28,12 @@ arguments = sys.argv[2:]
 
 if arguments:
   for argument in arguments:
-    if os.path.isfile(f"C:\\Users\\chech\\music_player_py\\{argument}"):
-      print(f"Playing {argument}")
-    else:
-        raise ValueError(f"can't be found or accessed{argument}")
+    if not Path(argument).exists():
+      raise ValueError(f"{argument} can't be found or accessed")
+  for argument in arguments:
+    print(f'Playing {argument}')
+    music = pyglet.resource.media(f'{argument}')
+    music.play()
+    pyglet.app.run()
 else:
   raise ValueError('Play command requires at least one argument')
