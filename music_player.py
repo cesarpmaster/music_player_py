@@ -7,7 +7,9 @@ import os
 import pyglet
 from pathlib import Path
 
-valid_commands = ["play"]
+valid_commands = ['play']
+
+archives = []
 
 places = "C:\\Users\\chech\\music_player_py"
 
@@ -35,5 +37,5 @@ if arguments:
     music = pyglet.resource.media(f'{argument}')
     music.play()
     pyglet.app.run()
-else:
+
   raise ValueError('Play command requires at least one argument')
